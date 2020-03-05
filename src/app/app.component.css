@@ -1,0 +1,24 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: lightgray;
+  }
+  
+  .example-full-width {
+    width: 80%;
+    margin-left: 5%;
+  }
+  
+  .btnAdd {
+    text-align: center;
+  }
+  
+  .card {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
