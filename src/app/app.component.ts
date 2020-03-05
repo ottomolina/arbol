@@ -10,6 +10,7 @@ export class AppComponent {
   tipos: any = [
     { value: '0', viewValue: 'Preorden' },
     { value: '1', viewValue: 'Inorden' },
-    { value: '2', viewValue: 'Postorden' }
+    { value: '2', viewValue: 'Postorden' },
+    { value: '3', viewValue: 'Anchura' }
   ];
 }
