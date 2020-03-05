@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'arbol';
+  tipos: any = [
+    { value: '0', viewValue: 'Preorden' },
+    { value: '1', viewValue: 'Inorden' },
+    { value: '2', viewValue: 'Postorden' }
+  ];
 }
