@@ -15,19 +15,19 @@
     <mat-card class="card">
       <mat-form-field>
         <mat-label>Tipo</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="cmbValor">
           <mat-option *ngFor="let tipo of tipos" [value]="tipo.value">
-            {{tipo.viewValue}}
+            {{ tipo.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <mat-label>Valor</mat-label>
-        <input matInput placeholder="" value="">
+        <mat-label>Meta</mat-label>
+        <input matInput [(ngModel)]="txtValor">
       </mat-form-field>
       <div class="btnAdd">
-        <button mat-raised-button>Recorrido</button>
+        <button mat-raised-button (click)="busqueda()">Recorrido</button>
       </div>
     </mat-card>
   </mat-sidenav>

@@ -7,6 +7,7 @@ export class NodoCola {
 export class Cola {
     raiz: NodoCola;
     fondo: NodoCola;
+
     constructor() {
         this.raiz = null;
         this.fondo = null;
@@ -14,7 +15,7 @@ export class Cola {
     isEmpty() {
         return this.raiz == null;
     }
-    insertar(valor: number) {
+    insertar(valor: any) {
         const nuevo: NodoCola = new NodoCola();
         nuevo.dato = valor;
         nuevo.sig = null;
@@ -25,9 +26,9 @@ export class Cola {
             this.fondo = nuevo;
         }
     }
-    extrae() {
+    extrae(): any {
         if (!this.isEmpty()) {
-            const valor = this.raiz.dato;
+            const valor = this.raiz;
             if (this.raiz === this.fondo) {
                 this.raiz = this.fondo = null;
             } else {
@@ -36,5 +37,15 @@ export class Cola {
             return valor;
         }
         return null;
+    }
+
+    length(): number {
+        let ret = 0;
+        let aux: NodoCola = this.raiz;
+        while (aux != null) {
+            ret++;
+            aux = aux.sig;
+        }
+        return ret;
     }
 }

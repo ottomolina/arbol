@@ -74,23 +74,42 @@ export class Arbol {
             return;
         }
     }
+    private profDer(reco: Nodo) {
+        if (reco !== null) {
+            this.label += reco.valor.toString() + ',';
+            this.profDer(reco.der);
+            this.profDer(reco.izq);
+        } else {
+            return;
+        }
+    }
 
     public preordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.preorden(nodo);
+        this.label = this.label.substring(0, this.label.length - 1);
         return this.label;
     }
     public inordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.inorden(nodo);
+        this.label = this.label.substring(0, this.label.length - 1);
         return this.label;
     }
     public postordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.postorden(nodo);
+        this.label = this.label.substring(0, this.label.length - 1);
+        return this.label;
+    }
+    public profDerRet(): string {
+        const nodo: Nodo = this.raiz;
+        this.label = '';
+        this.profDer(nodo);
+        this.label = this.label.substring(0, this.label.length - 1);
         return this.label;
     }
 
