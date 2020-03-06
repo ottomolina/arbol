@@ -3,11 +3,12 @@
     <mat-card class="card">
       <mat-form-field>
         <mat-label>Valor</mat-label>
-        <input matInput placeholder="" value="">
+        <input matInput type="number" [(ngModel)]="valor" (keyup.enter)="agregarNodo()">
       </mat-form-field>
       <div class="btnAdd">
-        <button mat-raised-button>Agregar</button>
-        <button mat-raised-button>Reset</button>
+        <button mat-raised-button color="primary" (click)="agregarNodo()">Agregar</button>
+        <button mat-raised-button color="primary" (click)="reset()">Reset</button>
+        <!--<button mat-raised-button (click)="pintar()">Pintar</button>-->
       </div>
     </mat-card>
     <br>
@@ -32,7 +33,13 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="divTotal">
-      <app-grafo></app-grafo>
+      <mat-card class="card-graph">
+        <app-grafo [chartOption]="options"></app-grafo>
+      </mat-card>
+      <br>
+      <mat-card>
+        <app-grafo [chartOption]="optionsReco"></app-grafo>
+      </mat-card>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

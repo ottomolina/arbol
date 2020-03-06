@@ -10,17 +10,21 @@ export class Nodo {
 }
 
 export class Arbol {
-    private raiz: Nodo;
+    public raiz: Nodo;
     public label = '';
+    public alt: number;
+    public numNodos: number;
 
     constructor() {
         this.raiz = null;
         this.label = '';
+        this.alt = 0;
+        this.numNodos = 0;
     }
 
     insertar(valor: number) {
         const nuevo = new Nodo(valor);
-        if (this.raiz == null) {
+        if (this.raiz === null) {
             this.raiz = nuevo;
         } else {
             let anterior: Nodo = null;
@@ -29,8 +33,11 @@ export class Arbol {
                 anterior = reco;
                 if (valor < reco.valor) {
                     reco = reco.izq;
-                } else {
+                } else if (valor > reco.valor) {
                     reco = reco.der;
+                } else {
+                    console.log('El valor ya fue ingresado');
+                    return;
                 }
             }
             if (valor < anterior.valor) {
@@ -49,7 +56,7 @@ export class Arbol {
             return;
         }
     }
-    inorden(reco: Nodo) {
+    private inorden(reco: Nodo) {
         if (reco !== null) {
             this.preorden(reco.izq);
             this.label += reco.valor.toString() + ',';
@@ -58,7 +65,7 @@ export class Arbol {
             return;
         }
     }
-    postorden(reco: Nodo) {
+    private postorden(reco: Nodo) {
         if (reco !== null) {
             this.preorden(reco.izq);
             this.preorden(reco.der);
@@ -68,22 +75,35 @@ export class Arbol {
         }
     }
 
-    public preordenRet() {
+    public preordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.preorden(nodo);
         return this.label;
     }
-    public inordenRet() {
+    public inordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.inorden(nodo);
         return this.label;
     }
-    public postordenRet() {
+    public postordenRet(): string {
         const nodo: Nodo = this.raiz;
         this.label = '';
         this.postorden(nodo);
         return this.label;
+    }
+
+    private altura(nodo: Nodo, nivel: number) {
+        if (nodo !== undefined && nodo !== null) {
+            this.altura(nodo.izq, nivel + 1);
+            this.alt = nivel;
+            this.altura(nodo.der, nivel + 1);
+        }
+    }
+
+    public getAltura(): number {
+        this.altura(this.raiz, 1);
+        return this.alt;
     }
 }

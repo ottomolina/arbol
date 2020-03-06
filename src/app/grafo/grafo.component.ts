@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { EChartOption, ECharts } from 'echarts';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grafo',
@@ -6,19 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grafo.component.css']
 })
 export class GrafoComponent implements OnInit {
-
-  options = {
+  @Input() chartOption: any;
+  /*options: any = {
     title: {
       text: 'Gráfica Árbol'
     },
     tooltip: {},
-    animationDurationUpdate: 1500,
+    animationDurationUpdate: 1000,
     animationEasingUpdate: 'quinticInOut',
     series: [
       {
         type: 'graph',
         layout: 'none',
-        symbolSize: 60,
+        symbolSize: 30,
         roam: true,
         label: {
           normal: {
@@ -30,72 +32,11 @@ export class GrafoComponent implements OnInit {
         edgeLabel: {
           normal: {
             textStyle: {
-              fontSize: 20
+              fontSize: 8
             }
           }
         },
-        data: [{
-          name: 'Node 1',
-          x: 300,
-          y: 300
-        }, {
-          name: 'Node 2',
-          x: 800,
-          y: 300
-        }, {
-          name: 'Node 3',
-          x: 550,
-          y: 100
-        }, {
-          name: 'Node 4',
-          x: 550,
-          y: 500
-        }],
-        // links: [],
-        links: [/*{
-          source: 0,
-          target: 1,
-          symbolSize: [5, 20],
-          label: {
-            normal: {
-              show: true
-            }
-          },
-          lineStyle: {
-            normal: {
-              width: 5,
-              curveness: 0.2
-            }
-          }
-        },*/ /*{
-          source: 'Node 2',
-          target: 'Node 1',
-          label: {
-            normal: {
-              show: true
-            }
-          },
-          lineStyle: {
-            normal: { curveness: 0.2 }
-          }
-        },*/
-        {
-          source: 'Node 3',
-          target: 'Node 1'
-        },
-        {
-          source: 'Node 3',
-          target: 'Node 2'
-        },
-        {
-          source: 'Node 2',
-          target: 'Node 4'
-        }/*,
-        {
-          source: 'Node 1',
-          target: 'Node 4'
-        }*/
-      ],
+        data: [ {name: '1', x: 90, y: 50 } ],
         lineStyle: {
           normal: {
             opacity: 0.9,
@@ -105,11 +46,29 @@ export class GrafoComponent implements OnInit {
         }
       }
     ]
-  };
+  };*/
+  shown = false;
 
-  constructor() { }
+  /*public setOptions(options: any): void {
+    if (this.options !== null && this.options !== undefined) {
+      this.options.ngOnDestroy();
+    }
+    this.options = options;
+  }
+
+  public update(data: any, links: any): void {
+    this.shown = false;
+    this.options.series[0].data = data;
+    this.options.series[0].links = links;
+    this.shown = true;
+  }*/
+
+  constructor() {
+   }
 
   ngOnInit(): void {
+    console.log(this.chartOption);
   }
+
 
 }
